@@ -36,20 +36,28 @@
             <v-autocomplete
               v-model="formData.estado"
               label="Estado"
+              :items="estados"
+              item-text="nome"
+              item-value="sigla"
               required
               :rules="genericRules"
               color="hy_green"
               dark
               placeholder="Selecione o estado"
+              @input="$emit('buscar', formData.estado)"
             ></v-autocomplete>
             <v-autocomplete
               v-model="formData.municipio"
               label="Município"
+              :items="cidades"
+              item-text="nome"
+              item-value="nome"
               required
               :rules="genericRules"
               color="hy_green"
               dark
               placeholder="Selecione o município"
+              no-data-text="Nenhuma cidade encontrada"
             ></v-autocomplete>
             <v-select
               v-model="formData.fonteGeracao"
@@ -83,6 +91,12 @@ export default {
     loading: {
       type: Boolean,
       default: false,
+    },
+    estados: {
+      type: Array,
+    },
+    cidades: {
+      type: Array,
     },
   },
   data: () => ({

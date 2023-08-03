@@ -3,7 +3,11 @@
     <HeaderLayout />
     <BannerHome />
     <VantagensHome />
-    <SimuladorHome />
+    <SimuladorHome
+      :estados="estados"
+      :cidades="cidades"
+      @buscar="buscarCidades($event)"
+    />
     <ContatoHome />
     <QuemSomosHome />
     <FooterLayout />
@@ -19,9 +23,10 @@ import ContatoHome from "../components/home/ContatoHome";
 import QuemSomosHome from "../components/home/QuemSomosHome";
 import FooterLayout from "../layouts/FooterLayout";
 
+import { getEstados, getCidades } from "../utils/services";
+
 export default {
   name: "HomeView",
-
   components: {
     HeaderLayout,
     BannerHome,
@@ -30,6 +35,18 @@ export default {
     ContatoHome,
     QuemSomosHome,
     FooterLayout,
+  },
+  data: () => ({
+    estados: null,
+    cidades: null,
+  }),
+  async created() {
+    this.estados = await getEstados();
+  },
+  methods: {
+    async buscarCidades(UF) {
+      this.cidades = await getCidades(UF);
+    },
   },
 };
 </script>
