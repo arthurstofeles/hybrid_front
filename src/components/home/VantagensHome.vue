@@ -1,5 +1,5 @@
 <template>
-  <div class="quem-somos">
+  <div class="quem-somos" id="vantagens">
     <v-container>
       <v-row no-gutters>
         <v-col cols="12" class="mb-10">
@@ -45,8 +45,11 @@
           </div>
         </div>
       </v-row>
-      <v-btn x-large rounded class="black--text px-10" color="hy_blue"
-        >Saiba Mais</v-btn
+      <a
+        class="black--text px-10 v-btn v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--x-large hy_blue"
+        href="#quem-somos"
+        v-smooth-scroll="{ duration: 1000, updateHistory: false, offset: -50 }"
+        >Saiba Mais</a
       >
     </v-container>
   </div>
@@ -138,9 +141,10 @@ export default {
       }
     }
   }
-  button {
+  a {
     display: flex;
     margin: 0 auto;
+    max-width: 200px;
   }
 }
 </style>

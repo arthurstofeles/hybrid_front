@@ -1,5 +1,5 @@
 <template>
-  <div class="quem-somos">
+  <div class="quem-somos" id="quem-somos">
     <v-container>
       <v-row no-gutters>
         <v-col cols="12" class="mb-10">

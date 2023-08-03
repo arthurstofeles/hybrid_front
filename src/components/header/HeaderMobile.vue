@@ -8,7 +8,6 @@
           $emit('open');
         "
         color="black"
-        v-click-outside="onClickOutside"
         >mdi-menu</v-icon
       >
     </header>
@@ -18,13 +17,37 @@
       right
       temporary
       class="pa-2 hy_blue"
+      width="900"
     >
       <nav class="nav">
+        <img src="@/assets/icone-circulo.svg" class="mb-6" />
         <ul>
           <li v-for="(link, index) in links" :key="index">
-            <a :href="link.ancor">{{ link.title }}</a>
+            <a
+              @click="
+                drawer = !drawer;
+                $emit('open');
+              "
+              :href="link.ancor"
+              v-smooth-scroll="{
+                duration: 1000,
+                updateHistory: false,
+                offset: -50,
+              }"
+              >{{ link.title }}</a
+            >
           </li>
         </ul>
+        <v-icon
+          @click="
+            drawer = !drawer;
+            $emit('open');
+          "
+          large
+          color="black"
+        >
+          mdi-close
+        </v-icon>
       </nav>
     </v-navigation-drawer>
   </div>
@@ -46,11 +69,6 @@ export default {
   data: () => ({
     drawer: false,
   }),
-  methods: {
-    onClickOutside() {
-      this.$emit("open");
-    },
-  },
 };
 </script>
 
@@ -72,12 +90,20 @@ export default {
   }
 }
 .nav {
+  height: 100%;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   ul {
     list-style: none;
     padding: 16px;
+    text-align: center;
     li {
       color: #000;
-      margin-bottom: 16px;
+      margin-bottom: 32px;
+      font-size: 24px;
       font-weight: 500;
       a {
         text-decoration: none;

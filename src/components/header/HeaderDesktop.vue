@@ -2,10 +2,18 @@
   <div :class="{ onScroll: !topOfPage }">
     <header class="header">
       <nav>
-        <img src="@/assets/logo.svg" alt="Logo" @click="goToRoute('Home')" />
+        <img src="@/assets/logo.svg" alt="Logo" />
         <ul>
           <li v-for="(link, index) in links" :key="index">
-            <a :href="link.ancor">{{ link.title }}</a>
+            <a
+              :href="link.ancor"
+              v-smooth-scroll="{
+                duration: 1000,
+                updateHistory: false,
+                offset: -70,
+              }"
+              >{{ link.title }}</a
+            >
           </li>
         </ul>
       </nav>

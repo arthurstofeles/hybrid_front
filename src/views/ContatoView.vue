@@ -60,12 +60,9 @@ export default {
   },
   data: () => ({
     formData: {
-      energiaMedia: "",
-      garantiaFisica: "",
-      potenciaInstalada: "",
-      estado: "",
-      municipio: "",
-      fonteGeracao: "",
+      nome: "",
+      email: "",
+      phone: "",
     },
     valid: false,
     emailRules: [

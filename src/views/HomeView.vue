@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="home">
     <HeaderLayout />
     <BannerHome />
     <VantagensHome />
@@ -33,3 +33,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.home {
+  scroll-behavior: smooth;
+}
+</style>

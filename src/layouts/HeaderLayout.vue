@@ -24,23 +24,23 @@ export default {
     links: [
       {
         title: "HOME",
-        ancor: "#",
+        ancor: "#banner",
       },
       {
         title: "VANTAGENS",
-        ancor: "#",
+        ancor: "#vantagens",
       },
       {
         title: "SIMULADOR",
-        ancor: "#",
+        ancor: "#simulador",
       },
       {
         title: "QUEM SOMOS",
-        ancor: "#",
+        ancor: "#quem-somos",
       },
       {
         title: "CONTATO",
-        ancor: "#",
+        ancor: "#contato",
       },
     ],
     topOfPage: true,

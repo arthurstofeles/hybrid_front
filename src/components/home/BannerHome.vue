@@ -1,12 +1,15 @@
 <template>
-  <div class="banner">
+  <div class="banner" id="banner">
     <div>
       <h1>Energia Híbrida Inteligente</h1>
       <p>
         Benefícios e Proposta Única de Venda (Unique Selling Proposition - USP)
       </p>
-      <v-btn x-large rounded class="black--text px-10" color="hy_yellow"
-        >Simular</v-btn
+      <a
+        class="black--text px-10 v-btn v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--x-large hy_yellow"
+        href="#simulador"
+        v-smooth-scroll="{ duration: 1000, updateHistory: false, offset: -70 }"
+        >Simular</a
       >
     </div>
   </div>
@@ -50,10 +53,11 @@ export default {
         margin-bottom: 160px;
       }
     }
-    button {
+    a {
       @media screen and (max-width: 900px) {
         display: flex;
         margin: 0 auto;
+        max-width: 150px;
       }
     }
   }
