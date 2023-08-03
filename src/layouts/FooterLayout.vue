@@ -21,6 +21,9 @@
         </div>
       </v-row>
     </v-container>
+    <v-btn class="whatsapp" fab dark large color="#25d366">
+      <v-icon dark> mdi-whatsapp </v-icon>
+    </v-btn>
   </footer>
 </template>
 
@@ -67,6 +70,11 @@ footer {
       margin-top: 16px;
       justify-self: end;
     }
+  }
+  .whatsapp {
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
   }
 }
 </style>
