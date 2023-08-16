@@ -10,7 +10,7 @@
               label="Nome"
               required
               :rules="genericRules"
-              color="black"
+              color="hy_green"
               placeholder="Insira seu nome aqui"
               dark
             ></v-text-field>
@@ -19,7 +19,7 @@
               label="E-mail"
               required
               :rules="emailRules"
-              color="black"
+              color="hy_green"
               placeholder="Insira seu e-mail"
               dark
             ></v-text-field>
@@ -28,7 +28,7 @@
               label="Telefone"
               required
               :rules="genericRules"
-              color="black"
+              color="hy_green"
               placeholder="(xx) xxxxx-xxxx"
               v-mask="'(##) #####-####'"
               dark
@@ -46,12 +46,22 @@
         >
       </v-row>
     </v-container>
+    <AlertSuccess
+      :dialog="sucess"
+      :dialogMessage="message"
+      dialogTextButton="OK"
+      @close="$router.push({ path: '/' })"
+    />
   </div>
 </template>
 
 <script>
+import AlertSuccess from "@/components/custom/AlertSuccess";
 export default {
   name: "ContatoView",
+  components: {
+    AlertSuccess,
+  },
   props: {
     loading: {
       type: Boolean,
@@ -70,6 +80,8 @@ export default {
       (v) => /.+@.+\..+/.test(v) || "Ensira um e-mail valido",
     ],
     genericRules: [(v) => !!v || "Esse campo é obrigatório"],
+    sucess: false,
+    message: "Solicitação de contato enviada!",
   }),
   methods: {
     validate() {
@@ -77,7 +89,7 @@ export default {
     },
     send() {
       if (this.formValid) {
-        this.$emit("contato", this.formData);
+        this.sucess = true;
       }
     },
     reset() {

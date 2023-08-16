@@ -4,9 +4,17 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  state: {
+    form: {},
+  },
+  mutations: {
+    SET_FORM(state, payload) {
+      state.form = payload;
+    },
+  },
+  actions: {
+    setForm(context, payload) {
+      context.commit("SET_FORM", payload);
+    },
+  },
 });

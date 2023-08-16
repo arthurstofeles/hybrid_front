@@ -62,6 +62,7 @@
             <v-select
               v-model="formData.fonteGeracao"
               label="Fonte de Geração"
+              :items="fonteGeracao"
               required
               :rules="genericRules"
               color="hy_green"
@@ -98,6 +99,9 @@ export default {
     cidades: {
       type: Array,
     },
+    fonteGeracao: {
+      type: Array,
+    },
   },
   data: () => ({
     formData: {
@@ -121,7 +125,7 @@ export default {
     },
     send() {
       if (this.formValid) {
-        this.$emit("contato", this.formData);
+        this.$emit("simular", this.formData);
       }
     },
     reset() {
