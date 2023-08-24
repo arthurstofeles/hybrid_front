@@ -7,34 +7,37 @@
           <p>Abaixo, você pode simular os ganhos com a HYbrid.</p>
           <v-form ref="form" v-model="valid" lazy-validation class="mt-6">
             <v-text-field
-              v-model="formData.energiaMedia"
+              v-model="formData.energy_medium_anual"
               label="Energia Média Anual"
               required
               :rules="genericRules"
               color="hy_green"
               dark
               placeholder="MW/h/m"
+              v-mask="'###########'"
             ></v-text-field>
             <v-text-field
-              v-model="formData.garantiaFisica"
+              v-model="formData.physical_guarantee"
               label="Garantia Física"
               required
               :rules="genericRules"
               color="hy_green"
               dark
               placeholder="MW/h"
+              v-mask="'###########'"
             ></v-text-field>
             <v-text-field
-              v-model="formData.potenciaInstalada"
+              v-model="formData.installed_power"
               label="Potência Instalada"
               required
               :rules="genericRules"
               color="hy_green"
               dark
               placeholder="MW"
+              v-mask="'###########'"
             ></v-text-field>
             <v-autocomplete
-              v-model="formData.estado"
+              v-model="formData.state"
               label="Estado"
               :items="estados"
               item-text="nome"
@@ -44,10 +47,10 @@
               color="hy_green"
               dark
               placeholder="Selecione o estado"
-              @input="$emit('buscar', formData.estado)"
+              @input="$emit('buscar', formData.state)"
             ></v-autocomplete>
             <v-autocomplete
-              v-model="formData.municipio"
+              v-model="formData.city"
               label="Município"
               :items="cidades"
               item-text="nome"
@@ -60,7 +63,7 @@
               no-data-text="Nenhuma cidade encontrada"
             ></v-autocomplete>
             <v-select
-              v-model="formData.fonteGeracao"
+              v-model="formData.generation_source"
               label="Fonte de Geração"
               :items="fonteGeracao"
               required
@@ -89,10 +92,6 @@
 export default {
   name: "SimuladorHome",
   props: {
-    loading: {
-      type: Boolean,
-      default: false,
-    },
     estados: {
       type: Array,
     },
@@ -105,12 +104,12 @@ export default {
   },
   data: () => ({
     formData: {
-      energiaMedia: "",
-      garantiaFisica: "",
-      potenciaInstalada: "",
-      estado: "",
-      municipio: "",
-      fonteGeracao: "",
+      energy_medium_anual: "",
+      physical_guarantee: "",
+      state: "",
+      installed_power: "",
+      generation_source: "",
+      city: "",
     },
     valid: false,
     emailRules: [
@@ -118,6 +117,7 @@ export default {
       (v) => /.+@.+\..+/.test(v) || "Ensira um e-mail valido",
     ],
     genericRules: [(v) => !!v || "Esse campo é obrigatório"],
+    loading: false,
   }),
   methods: {
     validate() {
@@ -125,13 +125,9 @@ export default {
     },
     send() {
       if (this.formValid) {
+        this.loading = true;
         this.$emit("simular", this.formData);
       }
-    },
-    reset() {
-      this.formData.phone = "";
-      this.formData.email = "";
-      this.$refs.form.reset();
     },
   },
   computed: {

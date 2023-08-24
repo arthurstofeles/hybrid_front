@@ -14,6 +14,8 @@
 <script>
 import LoadingSimulador from "@/components/simulador/LoadingSimulador";
 import ResultadoSimulador from "@/components/simulador/ResultadoSimulador";
+import { getParams } from "../utils/services";
+
 export default {
   name: "SimuladorView",
   components: { LoadingSimulador, ResultadoSimulador },
@@ -21,11 +23,11 @@ export default {
     return {
       loading: true,
       valoresMW: {
-        termoHridraulica: 184,
-        solar: 260,
+        termoHridraulica: null,
+        solar: null,
       },
-      margenRisco: 0.8,
-      horasInsolacao: 14,
+      margenRisco: null,
+      horasInsolacao: null,
       formData: {
         energiaMedia: 0,
         garantiaFisica: 0,
@@ -34,16 +36,25 @@ export default {
       receitaBrutaAtual: 0,
       receitaBrutaHybrid: 0,
       novaGeracaoHybrid: 0,
+      params: null,
     };
   },
   async created() {
-    this.formData.energiaMedia = +this.$store.state.form.energiaMedia;
-    this.formData.garantiaFisica = +this.$store.state.form.garantiaFisica;
-    this.formData.potenciaInstalada = +this.$store.state.form.potenciaInstalada;
-    console.log(this.formData);
-    await this.calculo1();
-    await this.calculo2();
-    await this.calculo3();
+    this.params = await getParams();
+    if (this.params.length) {
+      this.valoresMW.solar = +this.params[0].value;
+      this.valoresMW.termoHridraulica = +this.params[1].value;
+      this.margenRisco = +this.params[2].value;
+      this.horasInsolacao = +this.params[3].value;
+
+      this.formData.energiaMedia = +this.$store.state.form.energy_medium_anual;
+      this.formData.garantiaFisica = +this.$store.state.form.physical_guarantee;
+      this.formData.potenciaInstalada = +this.$store.state.form.installed_power;
+
+      await this.calculo1();
+      await this.calculo2();
+      await this.calculo3();
+    }
   },
   methods: {
     calculo1() {

@@ -1,6 +1,6 @@
 export const ENDPOINTS = {
   ESTADOS: "localidades/estados/",
-  SIMULADOR: "/simulador",
-  LEAD: "/lead",
-  PARAMERS: "/paramers",
+  SIMULADOR: "/simulator/",
+  LEAD: "/lead/",
+  PARAMERS: "/paramers/",
 };

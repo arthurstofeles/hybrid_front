@@ -14,7 +14,7 @@ export const getCidades = async (UF) => {
 };
 
 export const sendContato = async (payload) => {
-  const { data } = await apiInstance.post(ENDPOINTS.LEAD, payload);
+  const { data } = await apiInstance.get(ENDPOINTS.LEAD, payload);
   return data;
 };
 

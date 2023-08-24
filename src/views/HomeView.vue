@@ -10,7 +10,7 @@
       @buscar="buscarCidades($event)"
       @simular="simular"
     />
-    <ContatoHome @contato="contato" />
+    <ContatoHome @contato="contato" :loading="loadingBtn" :sucess="sucess" />
     <QuemSomosHome />
     <FooterLayout />
     <AlertSuccess
@@ -38,7 +38,7 @@ import {
   getEstados,
   getCidades,
   sendContato,
-  getParams,
+  sendSimulacao,
 } from "../utils/services";
 
 export default {
@@ -61,32 +61,33 @@ export default {
     sucess: false,
     error: false,
     message: "",
+    loadingBtn: false,
+    params: null,
   }),
   async created() {
     this.estados = await getEstados();
-    const teste = await getParams();
-    console.log(teste);
   },
   methods: {
     async buscarCidades(UF) {
       this.cidades = await getCidades(UF);
     },
-    simular(e) {
-      this.$store.dispatch("setForm", e);
-      console.log(this.$store.state.form);
-      this.$router.push({ path: "/simulador" });
+    async simular(e) {
+      await sendSimulacao(e).then(() => {
+        this.$store.dispatch("setForm", e);
+        this.$router.push({ path: "/simulador" });
+      });
     },
     async contato(e) {
       this.error = false;
       this.loadingBtn = true;
       try {
         await sendContato(e).then(() => {
-          // this.loadingBtn = false;
+          this.loadingBtn = false;
           this.message = "Solicitação de contato enviada!";
           this.sucess = true;
         });
       } catch (e) {
-        // this.loadingBtn = false;
+        this.loadingBtn = false;
         this.message = "Ocorreu um erro inesperado";
         this.error = true;
       }

@@ -6,7 +6,7 @@
         <v-col cols="12">
           <v-form ref="form" v-model="valid" lazy-validation class="mb-8">
             <v-text-field
-              v-model="formData.nome"
+              v-model="formData.name"
               label="Nome"
               required
               :rules="genericRules"
@@ -40,8 +40,8 @@
           rounded
           class="enviar black--text mt-6 px-10"
           color="hy_green"
-          @click="send"
-          :loading="loading"
+          @click="contato"
+          :loading="loadingBtn"
           >Receber por E-mail</v-btn
         >
       </v-row>
@@ -52,15 +52,21 @@
       dialogTextButton="OK"
       @close="$router.push({ path: '/' })"
     />
+    <AlertError :alertError="error" :messageError="message" />
   </div>
 </template>
 
 <script>
 import AlertSuccess from "@/components/custom/AlertSuccess";
+import AlertError from "@/components/custom/AlertError";
+
+import { sendContato } from "../utils/services";
+
 export default {
   name: "ContatoView",
   components: {
     AlertSuccess,
+    AlertError,
   },
   props: {
     loading: {
@@ -70,7 +76,7 @@ export default {
   },
   data: () => ({
     formData: {
-      nome: "",
+      name: "",
       email: "",
       phone: "",
     },
@@ -81,21 +87,30 @@ export default {
     ],
     genericRules: [(v) => !!v || "Esse campo é obrigatório"],
     sucess: false,
-    message: "Solicitação de contato enviada!",
+    error: false,
+    message: "",
+    loadingBtn: false,
   }),
   methods: {
     validate() {
       this.$refs.form.validate();
     },
-    send() {
+    async contato() {
       if (this.formValid) {
-        this.sucess = true;
+        this.error = false;
+        this.loadingBtn = true;
+        try {
+          await sendContato(this.formData).then(() => {
+            this.loadingBtn = false;
+            this.message = "Solicitação de contato enviada!";
+            this.sucess = true;
+          });
+        } catch (e) {
+          this.loadingBtn = false;
+          this.message = "Ocorreu um erro inesperado";
+          this.error = true;
+        }
       }
-    },
-    reset() {
-      this.formData.phone = "";
-      this.formData.email = "";
-      this.$refs.form.reset();
     },
   },
   computed: {

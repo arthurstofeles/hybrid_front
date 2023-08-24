@@ -9,22 +9,21 @@
         Garantia Física: 20 MW/h | Potência Instalada: 40 MW Estado: Rio de
         Janeiro | Município: Niterói | Fonte de Geração: Térmica
       </p>
-      <!-- <h2>R$ 80.592.000,00</h2> -->
       <h2>{{ formatoMoeda(receitaBrutaAtual) }}</h2>
       <p>ESTIMATIVA RECEITA BRUTA ATUAL (ANUAL, SEM HYBRID)</p>
       <div class="numbers">
         <div>
-          <!-- <h2>36 MW</h2> -->
           <h2>{{ novaGeracaoHybrid }}</h2>
           <p>NOVA GERAÇÃO <span>COM HYBRID</span></p>
         </div>
         <div>
-          <!-- <h2>R$ 101.849.600,00</h2> -->
           <h2>{{ formatoMoeda(receitaBrutaHybrid) }}</h2>
           <p>ESTIMATIVA RECEITA <span>BRUTA COM HYBRID</span> (ANUAL)</p>
         </div>
         <div>
-          <h2>+ {{ diferenca.toFixed() }}%</h2>
+          <h2>
+            {{ diferenca.toFixed() > 0 ? "+" : "" }}{{ diferenca.toFixed() }}%
+          </h2>
           <p>GANHO PERCENTUAL COMPARATIVO</p>
         </div>
       </div>

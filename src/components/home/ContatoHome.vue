@@ -59,6 +59,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    sucess: {
+      type: Boolean,
+      default: false,
+    },
   },
   data: () => ({
     formData: {
@@ -85,12 +89,18 @@ export default {
     reset() {
       this.formData.phone = "";
       this.formData.email = "";
+      this.formData.phone = "";
       this.$refs.form.reset();
     },
   },
   computed: {
     formValid() {
       return this.$refs.form.validate();
+    },
+  },
+  watch: {
+    sucess() {
+      this.reset();
     },
   },
 };

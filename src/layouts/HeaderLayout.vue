@@ -60,9 +60,6 @@ export default {
         if (!this.topOfPage) this.topOfPage = true;
       }
     },
-    teste() {
-      console.log("oi");
-    },
   },
   beforeMount() {
     window.addEventListener("scroll", this.handleScroll);
