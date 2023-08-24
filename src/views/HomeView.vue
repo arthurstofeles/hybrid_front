@@ -74,6 +74,7 @@ export default {
     async simular(e) {
       await sendSimulacao(e).then(() => {
         this.$store.dispatch("setForm", e);
+        this.$store.dispatch("setSimulador", true);
         this.$router.push({ path: "/simulador" });
       });
     },

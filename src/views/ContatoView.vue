@@ -91,6 +91,11 @@ export default {
     message: "",
     loadingBtn: false,
   }),
+  created() {
+    if (!this.$store.state.simulador) {
+      this.$router.push({ path: "/" });
+    }
+  },
   methods: {
     validate() {
       this.$refs.form.validate();

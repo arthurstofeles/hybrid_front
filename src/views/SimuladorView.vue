@@ -40,6 +40,10 @@ export default {
     };
   },
   async created() {
+    if (!this.$store.state.simulador) {
+      this.$router.push({ path: "/" });
+    }
+
     this.params = await getParams();
     if (this.params.length) {
       this.valoresMW.solar = +this.params[0].value;
