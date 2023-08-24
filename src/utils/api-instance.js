@@ -8,15 +8,15 @@ const headers = {
   Accept: "application/json",
 };
 
-const success = (res) => res;
+// const success = (res) => res;
 
-const error = (err) => {
-  if (err.response.status === 401) {
-    window.location = "/login";
-  } else {
-    return Promise.reject(err);
-  }
-};
+// const error = (err) => {
+//   if (err.response.status === 401) {
+//     window.location = "/login";
+//   } else {
+//     return Promise.reject(err);
+//   }
+// };
 
 export const apiInstance = axios.create({
   headers: headers,
@@ -27,17 +27,17 @@ export const ibgeInstance = axios.create({
   baseURL: ibgeURL,
 });
 
-apiInstance.interceptors.response.use(success, error);
+// apiInstance.interceptors.response.use(success, error);
 
-apiInstance.interceptors.request.use(
-  function (config) {
-    const token = window.localStorage.token;
-    if (token) {
-      config.headers.Authorization = token;
-    }
-    return config;
-  },
-  function (error) {
-    return Promise.reject(error);
-  }
-);
+// apiInstance.interceptors.request.use(
+//   function (config) {
+//     const token = window.localStorage.token;
+//     if (token) {
+//       config.headers.Authorization = token;
+//     }
+//     return config;
+//   },
+//   function (error) {
+//     return Promise.reject(error);
+//   }
+// );

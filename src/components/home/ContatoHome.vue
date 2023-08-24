@@ -11,7 +11,7 @@
           </p>
           <v-form ref="form" v-model="valid" lazy-validation class="mt-6">
             <v-text-field
-              v-model="formData.nome"
+              v-model="formData.name"
               label="Nome"
               required
               :rules="genericRules"
@@ -62,12 +62,9 @@ export default {
   },
   data: () => ({
     formData: {
-      energiaMedia: "",
-      garantiaFisica: "",
-      potenciaInstalada: "",
-      estado: "",
-      municipio: "",
-      fonteGeracao: "",
+      name: "",
+      email: "",
+      phone: "",
     },
     valid: false,
     emailRules: [

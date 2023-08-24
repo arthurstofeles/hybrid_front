@@ -19,6 +19,7 @@
       dialogTextButton="OK"
       @close="sucess = false"
     />
+    <AlertError :alertError="error" :messageError="message" />
   </div>
 </template>
 
@@ -31,8 +32,14 @@ import ContatoHome from "../components/home/ContatoHome";
 import QuemSomosHome from "../components/home/QuemSomosHome";
 import FooterLayout from "../layouts/FooterLayout";
 import AlertSuccess from "@/components/custom/AlertSuccess";
+import AlertError from "@/components/custom/AlertError";
 
-import { getEstados, getCidades } from "../utils/services";
+import {
+  getEstados,
+  getCidades,
+  sendContato,
+  getParams,
+} from "../utils/services";
 
 export default {
   name: "HomeView",
@@ -45,16 +52,20 @@ export default {
     QuemSomosHome,
     FooterLayout,
     AlertSuccess,
+    AlertError,
   },
   data: () => ({
     estados: null,
     cidades: null,
     fonteGeracao: ["Hidráulica", "Térmica"],
     sucess: false,
-    message: "Solicitação de contato enviada!",
+    error: false,
+    message: "",
   }),
   async created() {
     this.estados = await getEstados();
+    const teste = await getParams();
+    console.log(teste);
   },
   methods: {
     async buscarCidades(UF) {
@@ -65,8 +76,20 @@ export default {
       console.log(this.$store.state.form);
       this.$router.push({ path: "/simulador" });
     },
-    contato() {
-      this.sucess = true;
+    async contato(e) {
+      this.error = false;
+      this.loadingBtn = true;
+      try {
+        await sendContato(e).then(() => {
+          // this.loadingBtn = false;
+          this.message = "Solicitação de contato enviada!";
+          this.sucess = true;
+        });
+      } catch (e) {
+        // this.loadingBtn = false;
+        this.message = "Ocorreu um erro inesperado";
+        this.error = true;
+      }
     },
   },
 };

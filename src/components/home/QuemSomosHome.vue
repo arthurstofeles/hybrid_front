@@ -12,42 +12,63 @@
         </v-col>
         <div class="colunas">
           <div class="perfil">
-            <img
-              src="@/assets/circle.svg"
-              alt="Chief Technology Officer (CTO)"
-            />
+            <img src="@/assets/alex-norinho.png" alt="Alex Norinho" />
             <div>
               <h3>
-                <a href="#" target="_blank">Fulano de Tal</a>
+                <a href="#" target="_blank">Alex Norinho</a>
               </h3>
-              <p>Função Profissional da pessoal</p>
+              <p>
+                CEO, Empresário, Engenheiro Civil da Eletrobras Furnas, com 13
+                anos de experiênciano setor elétrico.
+              </p>
             </div>
           </div>
           <div class="perfil left">
-            <img src="@/assets/circle.svg" alt="Daniel Alves Lara Fernandes" />
+            <img src="@/assets/sarita-molina.png" alt="Sarita Molina" />
             <div>
               <h3>
-                <a href="#" target="_blank">Fulano de Tal</a>
+                <a href="#" target="_blank">Sarita Molina</a>
               </h3>
-              <p>Função Profissional da pessoal</p>
+              <p>
+                Analista de Sistemas e Cientista de Dados, com mais de 35 anos
+                de experiência no setor elétrico.
+              </p>
             </div>
           </div>
           <div class="perfil">
-            <img src="@/assets/circle.svg" alt="Fausto Pereira Neto" />
+            <img src="@/assets/tiberio-duarte.png" alt="Tibério Duarte" />
             <div>
               <h3>
-                <a href="#" target="_blank">Fulano de Tal</a>
+                <a href="#" target="_blank">Tibério Duarte</a>
               </h3>
-              <p>Função Profissional da pessoal</p>
+              <p>
+                Especialista em Inovação e Projetos da Eletrobras Chesf, com 12
+                anos de experiência no setor elétrico.
+              </p>
             </div>
           </div>
           <div class="perfil left">
-            <img src="@/assets/circle.svg" alt="Jesus Carlos da Silva" />
+            <img src="@/assets/alex-campos.png" alt="Alex Campos" />
             <div>
               <h3>
-                <a href="#" target="_blank">Fulano de Tal</a>
+                <a href="#" target="_blank">Alex Campos</a>
               </h3>
-              <p>Função Profissional da pessoal</p>
+              <p>
+                Gestor de Projetos de Energia na Eletrobras Furnas, com 18 anos
+                de experiência no setor elétrico.
+              </p>
+            </div>
+          </div>
+          <div class="perfil">
+            <img src="@/assets/antonio-augusto.png" alt="Antonio Augusto:" />
+            <div>
+              <h3>
+                <a href="#" target="_blank">Antonio Augusto:</a>
+              </h3>
+              <p>
+                Engenheiro na Eletrobras Holding, com mais de 35 anos de
+                experiência no setor elétrico.
+              </p>
             </div>
           </div>
         </div>
@@ -89,7 +110,7 @@ export default {
   }
   .colunas {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-between;
     gap: 32px;
     width: 100%;
