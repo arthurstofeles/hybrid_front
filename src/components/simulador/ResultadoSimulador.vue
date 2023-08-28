@@ -22,7 +22,8 @@
         </div>
         <div>
           <h2>
-            {{ diferenca.toFixed() > 0 ? "+" : "" }}{{ diferenca.toFixed() }}%
+            {{ diferencaPercentual.toFixed() > 0 ? "+" : ""
+            }}{{ diferencaPercentual.toFixed() }}%
           </h2>
           <p>GANHO PERCENTUAL COMPARATIVO</p>
         </div>
@@ -52,11 +53,8 @@ export default {
     novaGeracaoHybrid: {
       type: Number,
     },
-  },
-  computed: {
-    diferenca() {
-      const dif = (this.receitaBrutaHybrid * 100) / this.receitaBrutaAtual;
-      return dif - 100;
+    diferencaPercentual: {
+      type: Number,
     },
   },
   methods: {

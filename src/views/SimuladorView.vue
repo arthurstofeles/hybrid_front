@@ -7,6 +7,7 @@
       :receitaBrutaAtual="receitaBrutaAtual"
       :receitaBrutaHybrid="receitaBrutaHybrid"
       :novaGeracaoHybrid="novaGeracaoHybrid"
+      :diferencaPercentual="diferencaPercentual"
     />
   </div>
 </template>
@@ -36,6 +37,7 @@ export default {
       receitaBrutaAtual: 0,
       receitaBrutaHybrid: 0,
       novaGeracaoHybrid: 0,
+      diferencaPercentual: 0,
       params: null,
     };
   },
@@ -58,6 +60,14 @@ export default {
       await this.calculo1();
       await this.calculo2();
       await this.calculo3();
+      this.diferencaPercentual = await this.diferenca();
+
+      this.$store.dispatch("setCalc", {
+        receitaBrutaAtual: this.receitaBrutaAtual,
+        receitaBrutaHybrid: this.receitaBrutaHybrid,
+        novaGeracaoHybrid: this.novaGeracaoHybrid,
+        diferencaPercentual: this.diferencaPercentual,
+      });
     }
   },
   methods: {
@@ -75,6 +85,10 @@ export default {
     calculo3() {
       const result = this.formData.garantiaFisica + this.var2;
       this.novaGeracaoHybrid = result;
+    },
+    diferenca() {
+      const dif = (this.receitaBrutaHybrid * 100) / this.receitaBrutaAtual;
+      return dif - 100;
     },
   },
   computed: {

@@ -79,6 +79,7 @@ export default {
       name: "",
       email: "",
       phone: "",
+      calc: [],
     },
     valid: false,
     emailRules: [
@@ -95,6 +96,18 @@ export default {
     if (!this.$store.state.simulador) {
       this.$router.push({ path: "/" });
     }
+    this.formData.calc = [
+      `Estimativa receita bruta atual (anual, sem hybrid): ${this.formatoMoeda(
+        this.$store.state.calc.receitaBrutaAtual
+      )}`,
+      `Nova geração com hybrid: ${this.$store.state.calc.novaGeracaoHybrid}`,
+      `Estimativa receita bruta com hybrid (anual): ${this.formatoMoeda(
+        this.$store.state.calc.receitaBrutaHybrid
+      )}`,
+      `Ganho percentual comparativo: ${
+        this.$store.state.calc.diferencaPercentual.toFixed() > 0 ? "+" : ""
+      }${this.$store.state.calc.diferencaPercentual.toFixed()}%`,
+    ];
   },
   methods: {
     validate() {
@@ -116,6 +129,13 @@ export default {
           this.error = true;
         }
       }
+    },
+    formatoMoeda(valor) {
+      const formatter = new Intl.NumberFormat("pt-BR", {
+        style: "currency",
+        currency: "BRL",
+      });
+      return formatter.format(valor);
     },
   },
   computed: {

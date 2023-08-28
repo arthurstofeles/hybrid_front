@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     form: {},
     simulador: false,
+    calc: {},
   },
   mutations: {
     SET_FORM(state, payload) {
@@ -15,6 +16,9 @@ export default new Vuex.Store({
     SET_SIMULADOR(state, payload) {
       state.simulador = payload;
     },
+    SET_CALC(state, payload) {
+      state.calc = payload;
+    },
   },
   actions: {
     setForm(context, payload) {
@@ -22,6 +26,9 @@ export default new Vuex.Store({
     },
     setSimulador(context, payload) {
       context.commit("SET_SIMULADOR", payload);
+    },
+    setCalc(context, payload) {
+      context.commit("SET_CALC", payload);
     },
   },
 });
