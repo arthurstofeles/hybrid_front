@@ -79,7 +79,7 @@ export default {
       name: "",
       email: "",
       phone: "",
-      calc: [],
+      simulator: "",
     },
     valid: false,
     emailRules: [
@@ -96,18 +96,16 @@ export default {
     if (!this.$store.state.simulador) {
       this.$router.push({ path: "/" });
     }
-    this.formData.calc = [
-      `Estimativa receita bruta atual (anual, sem hybrid): ${this.formatoMoeda(
-        this.$store.state.calc.receitaBrutaAtual
-      )}`,
-      `Nova geração com hybrid: ${this.$store.state.calc.novaGeracaoHybrid}`,
-      `Estimativa receita bruta com hybrid (anual): ${this.formatoMoeda(
+    this.formData.simulator = `Estimativa receita bruta atual (anual, sem hybrid): ${this.formatoMoeda(
+      this.$store.state.calc.receitaBrutaAtual
+    )};
+      Nova geração com hybrid: ${this.$store.state.calc.novaGeracaoHybrid};
+      Estimativa receita bruta com hybrid (anual): ${this.formatoMoeda(
         this.$store.state.calc.receitaBrutaHybrid
-      )}`,
-      `Ganho percentual comparativo: ${
+      )};
+      Ganho percentual comparativo: ${
         this.$store.state.calc.diferencaPercentual.toFixed() > 0 ? "+" : ""
-      }${this.$store.state.calc.diferencaPercentual.toFixed()}%`,
-    ];
+      }${this.$store.state.calc.diferencaPercentual.toFixed()}%`;
   },
   methods: {
     validate() {

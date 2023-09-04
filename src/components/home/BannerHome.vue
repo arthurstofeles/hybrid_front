@@ -3,7 +3,9 @@
     <div>
       <h1>Energia Híbrida Inteligente</h1>
       <p>
-        Benefícios e Proposta Única de Venda (Unique Selling Proposition - USP)
+        A HYbrid amplia capacidade de geração utilizando energias híbridas<br />
+        sustentáveis com mais eficiência, aproveitando infra-estrutura de<br />
+        transmissão existente e áreas ociosas.
       </p>
       <a
         class="black--text px-10 v-btn v-btn--is-elevated v-btn--has-bg v-btn--rounded theme--light v-size--x-large hy_yellow"
@@ -43,7 +45,7 @@ export default {
       }
     }
     p {
-      color: #26a5cd;
+      color: #1b6501;
       font-family: "Inter", sans-serif;
       font-size: 20px;
       font-weight: 400;

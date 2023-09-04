@@ -5,9 +5,33 @@
         <v-col cols="12" class="mb-10">
           <h2>Quem somos</h2>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-            imperdiet interdum leo non ullamcorper. Cras tempor vitae ipsum et
-            facilisis.
+            O grupo de pesquisadores da HYbrid Energia , foi formado durante a
+            segunda edição das Olímpiadas do Conhecimento do grupo Eletrobras,
+            que é um torneio de inovação tecnológica promovido por Furnas .
+            Inicialmente, a ideia era aproveitar as áreas ociosas pertencentes
+            às usinas da empresa para instalar parques de geração solar
+            fotovoltaica, conferindo a essas áreas uma utilidade atinente ao
+            negócio de Furnas . No entanto, com a evolução das pesquisas, foram
+            verificadas diversas outras oportunidades de melhoria . Assim, os
+            estudos avançaram para incluir outros benefícios, tais como: aumento
+            da capacidade instalada e da garantia física das usinas; otimização
+            no aproveitamento da infraestrutura de transmissão já existente;
+            melhora no nível de confiabilidade referente a energia assegurada,
+            evitando a exposição ao mercado spot; expansão dentro dos critérios
+            modernos da sustentabilidade; preservação do nível dos
+            reservatórios, poupando o principal insumo e combustível de geração
+            elétrica do Brasil: a água; e finalmente a eficiência na aplicação
+            dos recursos financeiros disponíveis, ajudando a empresa a se tornar
+            mais competitiva .
+          </p>
+          <p>
+            Desse modo, os pesquisadores HYbrid identificaram e estudaram as
+            oportunidades de melhoria descritas, aplicando os critérios de
+            sustentabilidade e eficiência, e assim, conseguiram desenvolver, com
+            pioneirismo, uma solução de hibridização da energia elétrica
+            despachável com intermitente, inédita no mundo, e pronta para ir ao
+            mercado e trazer benefícios para o conjunto da sociedade brasileira
+            e para os parceiros .
           </p>
         </v-col>
         <div class="colunas">
@@ -63,7 +87,7 @@
             <img src="@/assets/antonio-augusto.png" alt="Antonio Augusto:" />
             <div>
               <h3>
-                <a href="#" target="_blank">Antonio Augusto:</a>
+                <a href="#" target="_blank">Antonio Augusto</a>
               </h3>
               <p>
                 Engenheiro na Eletrobras Holding, com mais de 35 anos de
