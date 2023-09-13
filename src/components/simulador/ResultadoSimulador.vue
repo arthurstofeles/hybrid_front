@@ -5,9 +5,13 @@
     </div>
     <v-container>
       <p>
-        Considerando os seguintes parâmetros: Energia Média Anual: 50 MW/h/m |
-        Garantia Física: 20 MW/h | Potência Instalada: 40 MW Estado: Rio de
-        Janeiro | Município: Niterói | Fonte de Geração: Térmica
+        Considerando os seguintes parâmetros: Energia Média Anual:
+        {{ this.$store.state.form.energy_medium_anual }} MW/h/m | Garantia
+        Física: {{ this.$store.state.form.physical_guarantee }} MW/h | Potência
+        Instalada: {{ this.$store.state.form.installed_power }} MW | Município:
+        {{ this.$store.state.form.city }} - {{ this.$store.state.form.state }} |
+        Fonte de Geração:
+        {{ this.$store.state.form.generation_source }}
       </p>
       <h2>{{ formatoMoeda(receitaBrutaAtual) }}</h2>
       <p>ESTIMATIVA RECEITA BRUTA ATUAL (ANUAL, SEM HYBRID)</p>

@@ -57,6 +57,8 @@ export default {
       this.formData.garantiaFisica = +this.$store.state.form.physical_guarantee;
       this.formData.potenciaInstalada = +this.$store.state.form.installed_power;
 
+      console.log(this.$store.state);
+
       await this.calculo1();
       await this.calculo2();
       await this.calculo3();
